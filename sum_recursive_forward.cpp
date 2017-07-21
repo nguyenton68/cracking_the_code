@@ -18,7 +18,7 @@ int main()
   /* List 1 */
   start1 = create_node(7);
   start1->next = create_node(1);
-  start1->next->next = create_node(5);
+  //  start1->next->next = create_node(5);
   print(start1);
   /* List 2 */
   start2 = create_node(4);
@@ -54,7 +54,7 @@ node *sum(node *l1, node *l2, int carry)
   /*Why have to malloc?  */
   node *result=(node*)malloc(sizeof(node));
   value =carry;
-  node *tmp;
+
   if(l1==NULL && l2==NULL && carry==0)
     return NULL;
 
@@ -68,7 +68,7 @@ node *sum(node *l1, node *l2, int carry)
   /* Recursive call  */
   if(l1!=NULL || l2!=NULL)
     {
-      node *tmp = sum(l1->next, l2->next, (value>10)?1 :0);      
+      node *tmp = sum(l1? l1->next :0,l2 ? l2->next:0, (value>10)?1 :0);      
       result->next = tmp;/* Link to the list */
     }
   return result;
